@@ -1,0 +1,30 @@
+---
+BasedOnStyle: Google  # 基于Google风格
+Language: Cpp  # 适用于C++语言
+IndentWidth: 4  # 缩进宽度为4个空格
+AccessModifierOffset: -4  # 访问修饰符的偏移量为-4个空格
+ColumnLimit: 80  # 每行的最大字符数为80
+IndentCaseLabels: false  # 不缩进case标签
+
+AllowShortBlocksOnASingleLine: Never  # 从不允许短代码块在同一行
+AllowShortCaseLabelsOnASingleLine: false  # 不允许短case标签在同一行
+AllowShortFunctionsOnASingleLine: None  # 不允许短函数在同一行
+AllowShortIfStatementsOnASingleLine: Never  # 从不允许短if语句在同一行
+AllowShortLoopsOnASingleLine: false  # 不允许短循环在同一行
+
+BreakStringLiterals: false  # 不拆分字符串字面量
+CompactNamespaces: false  # 不使用紧凑的命名空间格式
+Cpp11BracedListStyle: true  # 使用C++11的大括号列表样式
+
+IndentCaseBlocks: false  # 不缩进case块
+IndentPPDirectives: AfterHash  # 预处理指令在#之后缩进
+
+AlignTrailingComments: true  # 对齐尾随注释
+AlignConsecutiveMacros: true  # 对齐连续的宏定义
+SortIncludes: true  # 对包含文件进行排序
+
+DerivePointerAlignment: false  # 不自动推导指针对齐方式
+PointerAlignment: Right  # 指针对齐方式为右对齐
+
+BreakBeforeBinaryOperators: NonAssignment  # 非赋值操作符前换行
+AlignAfterOpenBracket: BlockIndent  # 在打开括号后按块缩进对齐
