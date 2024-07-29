@@ -1,7 +1,8 @@
 ### 格式规范
 
 - [x] .clang-format
-- [x] Semantic Versioning
+- [x] Semantic Versioning 语义化版本
+- [x] Conventional Commits 约定式提交
 - [ ] doxygen
 
 ### 环境
@@ -37,6 +38,7 @@
 ### 持续集成
 
 - [ ] Git
+- [ ] Github
 - [ ] Gitlab
 - [ ] Gerrit
 - [ ] Jenkins
@@ -49,3 +51,18 @@
 ### 工具
 
 - [ ] 
+
+### 协议
+
+- [ ] bluetooth
+- [ ] protobuf
+- [ ] gRPC
+- [ ] RPC
+- [ ] MQTT
+- [ ] Modbus
+- [ ] HTTP
+
+### 组件
+
+- [ ] cJSON
+- [ ] TLS
