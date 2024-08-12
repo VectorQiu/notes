@@ -1,41 +1,53 @@
-### 格式规范
+# 组件
+
+## 1.协议
+
+- [ ] protobuf
+- [ ] gRPC
+- [ ] MQTT
+- [ ] Modbus
+- [ ] HTTP
+- [ ] CANopen
+
+## 2.OS
+
+- [ ] linux
+- [ ] FreeRTOS
+- [ ] RT-Thread
+- [ ] Ucos
+- [ ] ThreadX
+- [ ] RTX
+- [ ] ROS
+
+# 平台
+
+
+
+# 编程
+
+## 1.specifications
 
 - [x] .clang-format
 - [x] Semantic Versioning 语义化版本
 - [x] Conventional Commits 约定式提交
 - [ ] doxygen
 
-### 环境
+## 2.language
 
-- [ ] vscode
-- [ ] MDK
-- [ ] IAR
-- [ ] Embedded Studio
-
-### 编译器
+## 3.compilers
 
 - [ ] Clang
 - [ ] gcc
 
-### 自动构建
+## 4.script
+
+## 5.build
 
 - [ ] Makefile  
 - [ ] cmake
 - [ ] bazel
 
-### 单元测试
-
-- [ ] gtest
-- [ ] gmock
-- [ ] unity
-
-### 调试
-
-- [ ] openOCD
-- [ ] J-link
-- [ ] Ozone
-
-### 持续集成
+## 6.ci
 
 - [ ] Git
 - [ ] Github
@@ -43,26 +55,37 @@
 - [ ] Gerrit
 - [ ] Jenkins
 
-### 团队协作项目管理
+## 7.test
 
+- [ ] gtest
+- [ ] gmock
+- [ ] unity
+
+## 8.IDE
+
+- [ ] vscode
+- [ ] MDK
+- [ ] IAR
+- [ ] Embedded Studio
+
+# 工具
+
+- [ ] Open Flash Loader
+- [ ] Wireshark
+- [ ] Postman
+- [ ] MQTT.fx
+- [ ] MobaXterm
+- [ ] Beyond Compare4
+- [ ] vofa+
+- [ ] DeepL
+- [ ] Bus Hound
+- [ ] Typora
+- [ ] Notepad++
 - [ ] Confluence
 - [ ] Jira
+- [ ] openOCD
+- [ ] J-link
+- [ ] Ozone
 
-### 工具
 
-- [ ] 
 
-### 协议
-
-- [ ] bluetooth
-- [ ] protobuf
-- [ ] gRPC
-- [ ] RPC
-- [ ] MQTT
-- [ ] Modbus
-- [ ] HTTP
-
-### 组件
-
-- [ ] cJSON
-- [ ] TLS
