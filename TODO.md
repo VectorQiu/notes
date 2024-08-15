@@ -19,6 +19,13 @@
 - [ ] RTX
 - [ ] ROS
 
+## 3.library
+
+- [x] jsmn
+- [ ] cJSON
+- [ ] Unity
+- [ ] xmodem
+
 # 平台
 
 
@@ -43,7 +50,7 @@
 
 ## 5.build
 
-- [ ] Makefile  
+- [ ] Makefile
 - [ ] cmake
 - [ ] bazel
 
