@@ -1,0 +1,30 @@
+// import语句引入其他protobuf文件
+// import "other_portos.porto";
+
+// 指定protobuf遵循的语法格式
+syntax = "proto3";
+
+// 包名声明 proto文件生成的类都会在此namespace student中，防止命名冲突
+package student;
+
+
+enum Sex // 自定义枚举类型
+{
+    MALE = 0;
+    FEMALE = 1;
+}
+
+message Course // message定义数据结构
+{
+    int32 credit = 1;
+    string name = 2;
+}
+
+message StudentInfo {
+    // 变量声明格式 <限定修饰符> <数据类型> <变量名> = id;
+    int32 age = 1;
+    string name = 2;
+    Sex sex = 3;
+    // repeated 表示重复(数组), message可嵌套message
+    repeated Course course = 4;
+}

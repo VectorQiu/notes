@@ -8,6 +8,7 @@
 - [ ] Modbus
 - [ ] HTTP
 - [ ] CANopen
+- [ ] ntp
 
 ## 2.OS
 
@@ -23,6 +24,7 @@
 
 - [x] jsmn
 - [ ] cJSON
+- [ ] mbedtls
 - [ ] Unity
 - [ ] xmodem
 
@@ -93,6 +95,7 @@
 - [ ] openOCD
 - [ ] J-link
 - [ ] Ozone
+- [ ] scoop
 
 
 
