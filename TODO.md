@@ -2,8 +2,9 @@
 
 ## 1.协议
 
-- [ ] protobuf
-- [ ] gRPC
+- [x] protobuf
+- [x] gRPC
+- [x] xmodem
 - [ ] MQTT
 - [ ] Modbus
 - [ ] HTTP
