@@ -21,11 +21,16 @@
 - [ ] RTX
 - [ ] ROS
 
-## 3.library
+## 3.crypto
+
+- [ ] crc
+- [ ] md5
+- [ ] mbedtls
+
+## 4.library
 
 - [x] jsmn
 - [ ] cJSON
-- [ ] mbedtls
 - [ ] Unity
 - [ ] xmodem
 
@@ -88,7 +93,7 @@
 - [ ] Beyond Compare4
 - [ ] vofa+
 - [ ] DeepL
-- [ ] Bus Hound
+- [x] Bus Hound
 - [ ] Typora
 - [ ] Notepad++
 - [ ] Confluence
