@@ -45,7 +45,7 @@
 - [x] .clang-format
 - [x] Semantic Versioning 语义化版本
 - [x] Conventional Commits 约定式提交
-- [ ] doxygen
+- [x] doxygen
 
 ## 2.language
 
