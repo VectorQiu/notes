@@ -46,6 +46,11 @@
 - [x] Semantic Versioning 语义化版本
 - [x] Conventional Commits 约定式提交
 - [x] doxygen
+- [ ] Markdown
+- [ ] reStructuredText
+- [ ] Breathe
+- [ ] Sphinx
+- [ ] Read the Docs
 
 ## 2.language
 

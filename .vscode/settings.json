@@ -2,6 +2,7 @@
     "conventionalCommits.scopes": [
         "components",
         "tools",
-        "program"
+        "program",
+        "todo"
     ],
 }
