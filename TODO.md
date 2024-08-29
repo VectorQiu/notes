@@ -14,6 +14,7 @@
 ## 2.OS
 
 - [ ] linux
+- [ ] Android
 - [ ] FreeRTOS
 - [ ] RT-Thread
 - [ ] Ucos
@@ -33,10 +34,35 @@
 - [ ] cJSON
 - [ ] Unity
 - [ ] xmodem
+- [ ] NimBLE
+- [ ] Bluedroid
+- [ ] letter-shell
 
 # 平台
 
+## 1.架构
 
+### 1.1 ARM
+
+### 1.2 x86
+
+### 1.3 RISC-V
+
+### 1.4 MIPS
+
+## 2.芯片
+
+### 2.1 STMicroelectronics
+
+### 2.2 GigaDevices
+
+### 2.3 Ambiq
+
+### 2.4 Nordic
+
+### 2.5 Espressif
+
+### 2.6 WinnerMicro
 
 # 编程
 
@@ -70,6 +96,7 @@
 ## 6.ci
 
 - [ ] Git
+- [ ] repo
 - [ ] Github
 - [ ] Gitlab
 - [ ] Gerrit
