@@ -1,0 +1,9 @@
+[submodule "components/library/letter-shell/letter-shell"]
+	path = components/library/letter-shell/letter-shell
+	url = https://github.com/NevermindZZT/letter-shell.git
+[submodule "components/library/jsmn/jsmn"]
+	path = components/library/jsmn/jsmn
+	url = https://github.com/zserge/jsmn.git
+[submodule "components/library/cJSON/cJSON"]
+	path = components/library/cJSON/cJSON
+	url = https://github.com/DaveGamble/cJSON.git
