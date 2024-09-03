@@ -3,6 +3,7 @@
         "components",
         "tools",
         "program",
-        "todo"
+        "todo",
+        "help"
     ],
 }
