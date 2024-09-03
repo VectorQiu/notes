@@ -4,6 +4,7 @@
         "tools",
         "program",
         "todo",
-        "help"
+        "help",
+        "network"
     ],
 }
