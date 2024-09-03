@@ -5,9 +5,7 @@
 - [x] protobuf
 - [x] gRPC
 - [x] xmodem
-- [ ] MQTT
 - [ ] Modbus
-- [ ] HTTP
 - [ ] CANopen
 - [ ] ntp
 
@@ -26,17 +24,21 @@
 
 - [ ] crc
 - [ ] md5
-- [ ] mbedtls
+- [ ]
 
 ## 4.library
 
 - [x] jsmn
 - [ ] cJSON
+- [ ] letter-shell
+- [ ] HTTPClient
+- [ ] mbedtls
+- [ ] libemqtt
+- [ ] NimBLE
 - [ ] Unity
 - [ ] xmodem
-- [ ] NimBLE
 - [ ] Bluedroid
-- [ ] letter-shell
+- [ ] lwIP
 
 # 平台
 
@@ -114,6 +116,40 @@
 - [ ] MDK
 - [ ] IAR
 - [ ] Embedded Studio
+
+# 网络
+
+- [ ] WiFi
+- [ ] 以太网
+- [ ] 蓝牙
+
+## 1.通信协议
+
+- [ ] TCP/IP
+- [ ] UDP
+- [ ]  HTTP/HTTPS (Hypertext Transfer Protocol/Secure)
+- [ ] FTP (File Transfer Protocol)
+- [ ] SMTP (Simple Mail Transfer Protocol)
+- [ ] POP3 (Post Office Protocol 3)
+- [ ] IMAP (Internet Message Access Protocol)
+- [ ] DNS (Domain Name System)
+- [ ] Telnet
+- [ ] SSH (Secure Shell)
+- [ ] MQTT (Message Queuing Telemetry Transport)
+- [ ] CoAP (Constrained Application Protocol)
+- [ ] SNMP (Simple Network Management Protocol)
+- [ ] NTP (Network Time Protocol)
+- [ ] DHCP (Dynamic Host Configuration Protocol)
+- [ ] TFTP (Trivial File Transfer Protocol)
+- [ ] SIP (Session Initiation Protocol)
+- [ ] NAT (Network Address Translation)
+- [ ] TLS/SSL (Transport Layer Security / Secure Sockets Layer)
+- [ ] IPSec (Internet Protocol Security)
+- [ ] VPN (Virtual Private Network)
+
+## 2.安全协议
+
+- [ ]
 
 # 工具
 
