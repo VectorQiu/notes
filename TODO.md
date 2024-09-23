@@ -7,7 +7,6 @@
 - [x] xmodem
 - [ ] Modbus
 - [ ] CANopen
-- [ ] ntp
 
 ## 2.OS
 
@@ -65,6 +64,14 @@
 ### 2.5 Espressif
 
 ### 2.6 WinnerMicro
+
+## 3.SDK
+
+### 3.1 ESP-IDF
+
+### 3.2 W80X_SDK
+
+### 3.3 miot-esp32-sdk
 
 # 编程
 
@@ -127,7 +134,7 @@
 
 - [ ] TCP/IP
 - [ ] UDP
-- [ ]  HTTP/HTTPS (Hypertext Transfer Protocol/Secure)
+- [ ] HTTP/HTTPS (Hypertext Transfer Protocol/Secure)
 - [ ] FTP (File Transfer Protocol)
 - [ ] SMTP (Simple Mail Transfer Protocol)
 - [ ] POP3 (Post Office Protocol 3)
