@@ -39,6 +39,14 @@
 - [ ] Bluedroid
 - [ ] lwIP
 
+### 4.1 Flash
+
+- [ ] EasyLogger
+- [ ] EasyFlash
+- [ ] FlashDB
+- [ ] SFUD
+- [ ] FAL分区
+
 # 平台
 
 ## 1.架构

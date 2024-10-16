@@ -7,3 +7,12 @@
 [submodule "components/library/cJSON/cJSON"]
 	path = components/library/cJSON/cJSON
 	url = https://github.com/DaveGamble/cJSON.git
+[submodule "components/library/Flash/FlashDB/FlashDB"]
+	path = components/library/Flash/FlashDB/FlashDB
+	url = https://github.com/armink/FlashDB.git
+[submodule "components/library/Flash/EasyLogger/EasyLogger"]
+	path = components/library/Flash/EasyLogger/EasyLogger
+	url = https://github.com/armink/EasyLogger.git
+[submodule "components/library/Flash/EasyFlash/EasyFlash"]
+	path = components/library/Flash/EasyFlash/EasyFlash
+	url = https://github.com/armink/EasyFlash.git
