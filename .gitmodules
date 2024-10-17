@@ -7,3 +7,6 @@
 [submodule "components/debug/cmockery/cmockery"]
 	path = components/debug/cmockery/cmockery
 	url = https://github.com/google/cmockery.git
+[submodule "components/debug/googletest/googletest"]
+	path = components/debug/googletest/googletest
+	url = https://github.com/google/googletest.git
