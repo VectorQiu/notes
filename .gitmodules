@@ -28,3 +28,12 @@
 [submodule "components/flash/SFUD/SFUD"]
 	path = components/flash/SFUD/SFUD
 	url = https://github.com/armink/SFUD
+[submodule "components/logger/EasyLogger/EasyLogger"]
+	path = components/logger/EasyLogger/EasyLogger
+	url = https://github.com/armink/EasyLogger
+[submodule "components/logger/letter-shell/letter-shell"]
+	path = components/logger/letter-shell/letter-shell
+	url = https://github.com/NevermindZZT/letter-shell
+[submodule "components/logger/nr_micro_shell/nr_micro_shell"]
+	path = components/logger/nr_micro_shell/nr_micro_shell
+	url = https://github.com/Nrusher/nr_micro_shell
