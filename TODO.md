@@ -4,6 +4,10 @@
 
 ## algorithm
 
+## behavior tree
+
+- [ ] [BehaviorTree.CPP](https://github.com/BehaviorTree/BehaviorTree.CPP)
+
 ## bootloader
 
 ## crypto
