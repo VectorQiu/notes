@@ -4,3 +4,6 @@
 [submodule "components/debug/Unity/Unity"]
 	path = components/debug/Unity/Unity
 	url = https://github.com/ThrowTheSwitch/Unity.git
+[submodule "components/debug/cmockery/cmockery"]
+	path = components/debug/cmockery/cmockery
+	url = https://github.com/google/cmockery.git
