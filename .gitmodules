@@ -37,3 +37,15 @@
 [submodule "components/logger/nr_micro_shell/nr_micro_shell"]
 	path = components/logger/nr_micro_shell/nr_micro_shell
 	url = https://github.com/Nrusher/nr_micro_shell
+[submodule "components/protocol/jsmn/jsmn"]
+	path = components/protocol/jsmn/jsmn
+	url = https://github.com/zserge/jsmn
+[submodule "components/protocol/cJSON/cJSON"]
+	path = components/protocol/cJSON/cJSON
+	url = https://github.com/DaveGamble/cJSON
+[submodule "components/protocol/libemqtt/libemqtt"]
+	path = components/protocol/libemqtt/libemqtt
+	url = https://github.com/menudoproblema/libemqtt
+[submodule "components/protocol/HTTPClient/HTTPClient"]
+	path = components/protocol/HTTPClient/HTTPClient
+	url = https://github.com/VectorQiu/HTTPClient
