@@ -19,3 +19,6 @@
 [submodule "components/file system/littlefs/littlefs"]
 	path = components/file system/littlefs/littlefs
 	url = https://github.com/littlefs-project/littlefs.git
+[submodule "components/flash/EasyFlash/EasyFlash"]
+	path = components/flash/EasyFlash/EasyFlash
+	url = https://github.com/armink/EasyFlash
