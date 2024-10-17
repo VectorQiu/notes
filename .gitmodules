@@ -49,3 +49,9 @@
 [submodule "components/protocol/HTTPClient/HTTPClient"]
 	path = components/protocol/HTTPClient/HTTPClient
 	url = https://github.com/VectorQiu/HTTPClient
+[submodule "components/state machine/stateMachine/stateMachine"]
+	path = components/state machine/stateMachine/stateMachine
+	url = https://github.com/misje/stateMachine
+[submodule "components/state machine/qpc/qpc"]
+	path = components/state machine/qpc/qpc
+	url = https://github.com/QuantumLeaps/qpc
