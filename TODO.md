@@ -1,89 +1,115 @@
-# 组件
 
-## 1.协议
 
-- [x] protobuf
-- [x] gRPC
-- [x] xmodem
+# components
+
+## algorithm
+
+## bootloader
+
+## crypto
+
+- [ ] AES（Advanced Encryption Standard）
+- [ ] crc
+- [ ] md5
+- [ ] [mbedtls](https://github.com/Mbed-TLS/mbedtls)
+
+## debug
+
+- [ ] [Unity](https://github.com/ThrowTheSwitch/Unity)
+- [ ] [cmockery](https://github.com/google/cmockery)
+- [ ] [googletest](https://github.com/google/googletest)
+- [ ] [letter-shell](https://github.com/NevermindZZT/letter-shell)
+- [ ] [nr_micro_shell](https://github.com/Nrusher/nr_micro_shell)
+- [ ] [CmBacktrace](https://github.com/armink/CmBacktrace)
+
+## driver
+
+## device
+
+## file system
+
+- [ ] [fatfs](https://github.com/abbrev/fatfs)
+- [ ] [littlefs](https://github.com/littlefs-project/littlefs)
+
+## flash
+
+- [ ] [EasyFlash](https://github.com/armink/EasyFlash)
+- [ ] [FlashDB](https://github.com/armink/FlashDB)
+- [ ] [SFUD](https://github.com/armink/SFUD)
+- [ ] [fal](https://github.com/RT-Thread/rt-thread/tree/master/components/fal)
+
+## logger
+
+- [ ] [EasyLogger](https://github.com/armink/EasyLogger)
+
+## memory
+
+## os
+
+- [ ] [Linux](https://www.kernel.org/)
+- [ ] [Android](https://source.android.google.cn/?hl=zh-cn)
+- [ ] [FreeRTOS-Kernel](https://github.com/FreeRTOS/FreeRTOS-Kernel)
+- [ ] [rt-thread](https://github.com/RT-Thread/rt-thread)
+- [ ] [uC-OS3](https://github.com/weston-embedded/uC-OS3)
+- [ ] [threadx](https://github.com/eclipse-threadx/threadx)
+- [ ] [RTX]([CMSIS_5](https://github.com/ARM-software/CMSIS_5))
+- [ ] [ros](https://github.com/ros/ros)
+
+## protocol
+
+- [x] [jsmn](https://github.com/zserge/jsmn)
+- [ ] [cJSON](https://github.com/DaveGamble/cJSON)
+- [ ] [protobuf](https://github.com/protocolbuffers/protobuf)
+- [ ] [protobuf-c](https://github.com/protobuf-c/protobuf-c)
+- [ ] [grpc](https://github.com/grpc/grpc)
+
+- [ ] [lwip](https://github.com/lwip-tcpip/lwip)
+- [ ] [mynewt-nimble](https://github.com/apache/mynewt-nimble)
+- [ ] [libemqtt](https://github.com/menudoproblema/libemqtt)
+- [ ] [HTTPClient](https://github.com/VectorQiu/HTTPClient)
+- [ ] Bluedroid
+- [ ] xmodem
+
 - [ ] Modbus
 - [ ] CANopen
 
-## 2.OS
+# platform
 
-- [ ] linux
-- [ ] Android
-- [ ] FreeRTOS
-- [ ] RT-Thread
-- [ ] Ucos
-- [ ] ThreadX
-- [ ] RTX
-- [ ] ROS
+## architecture
 
-## 3.crypto
+### ARM
 
-- [ ] crc
-- [ ] md5
-- [ ]
+### x86
 
-## 4.library
+### RISC-V
 
-- [x] jsmn
-- [ ] cJSON
-- [ ] letter-shell
-- [ ] HTTPClient
-- [ ] mbedtls
-- [ ] libemqtt
-- [ ] NimBLE
-- [ ] Unity
-- [ ] xmodem
-- [ ] Bluedroid
-- [ ] lwIP
+### MIPS
 
-### 4.1 Flash
+## chip
 
-- [ ] EasyLogger
-- [ ] EasyFlash
-- [ ] FlashDB
-- [ ] SFUD
-- [ ] FAL分区
+### STMicroelectronics
 
-# 平台
+### GigaDevices
 
-## 1.架构
+### Ambiq
 
-### 1.1 ARM
+### Nordic
 
-### 1.2 x86
+### Espressif
 
-### 1.3 RISC-V
+### WinnerMicro
 
-### 1.4 MIPS
+## sdk
 
-## 2.芯片
+### ESP-IDF
 
-### 2.1 STMicroelectronics
+### W80X_SDK
 
-### 2.2 GigaDevices
+### miot-esp32-sdk
 
-### 2.3 Ambiq
+# programming
 
-### 2.4 Nordic
-
-### 2.5 Espressif
-
-### 2.6 WinnerMicro
-
-## 3.SDK
-
-### 3.1 ESP-IDF
-
-### 3.2 W80X_SDK
-
-### 3.3 miot-esp32-sdk
-
-# 编程
-
-## 1.specifications
+## specifications
 
 - [x] .clang-format
 - [x] Semantic Versioning 语义化版本
@@ -95,22 +121,22 @@
 - [ ] Sphinx
 - [ ] Read the Docs
 
-## 2.language
+## language
 
-## 3.compilers
+## compilers
 
 - [ ] Clang
 - [ ] gcc
 
-## 4.script
+## script
 
-## 5.build
+## build
 
 - [ ] Makefile
 - [ ] cmake
 - [ ] bazel
 
-## 6.ci
+## ci
 
 - [ ] Git
 - [ ] repo
@@ -119,13 +145,13 @@
 - [ ] Gerrit
 - [ ] Jenkins
 
-## 7.test
+## test
 
 - [ ] gtest
 - [ ] gmock
 - [ ] unity
 
-## 8.IDE
+## IDE
 
 - [ ] vscode
 - [ ] MDK
@@ -138,7 +164,7 @@
 - [ ] 以太网
 - [ ] 蓝牙
 
-## 1.通信协议
+## 通信协议
 
 - [ ] TCP/IP
 - [ ] UDP
@@ -162,11 +188,11 @@
 - [ ] IPSec (Internet Protocol Security)
 - [ ] VPN (Virtual Private Network)
 
-## 2.安全协议
+## 安全协议
 
 - [ ]
 
-# 工具
+# Tools
 
 - [ ] Open Flash Loader
 - [ ] Wireshark
@@ -174,7 +200,7 @@
 - [ ] MQTT.fx
 - [ ] MobaXterm
 - [ ] Beyond Compare4
-- [ ] vofa+
+- [x] vofa+
 - [ ] DeepL
 - [x] Bus Hound
 - [ ] Typora
