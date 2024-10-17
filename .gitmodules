@@ -22,3 +22,9 @@
 [submodule "components/flash/EasyFlash/EasyFlash"]
 	path = components/flash/EasyFlash/EasyFlash
 	url = https://github.com/armink/EasyFlash
+[submodule "components/flash/FlashDB/FlashDB"]
+	path = components/flash/FlashDB/FlashDB
+	url = https://github.com/armink/FlashDB
+[submodule "components/flash/SFUD/SFUD"]
+	path = components/flash/SFUD/SFUD
+	url = https://github.com/armink/SFUD
