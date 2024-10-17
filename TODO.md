@@ -13,6 +13,10 @@
 - [ ] md5
 - [ ] [mbedtls](https://github.com/Mbed-TLS/mbedtls)
 
+## data structure
+
+
+
 ## debug
 
 - [ ] [Unity](https://github.com/ThrowTheSwitch/Unity)
@@ -35,6 +39,10 @@
 - [ ] [FlashDB](https://github.com/armink/FlashDB)
 - [ ] [SFUD](https://github.com/armink/SFUD)
 - [ ] [fal](https://github.com/RT-Thread/rt-thread/tree/master/components/fal)
+
+## gui
+
+- [ ] [lvgl](https://github.com/lvgl/lvgl)
 
 ## logger
 
@@ -59,6 +67,7 @@
 
 - [x] [jsmn](https://github.com/zserge/jsmn)
 - [ ] [cJSON](https://github.com/DaveGamble/cJSON)
+- [ ] [inih](https://github.com/benhoyt/inih)
 - [ ] [protobuf](https://github.com/protocolbuffers/protobuf)
 - [ ] [protobuf-c](https://github.com/protobuf-c/protobuf-c)
 - [ ] [grpc](https://github.com/grpc/grpc)
@@ -72,6 +81,11 @@
 
 - [ ] Modbus
 - [ ] CANopen
+
+## state machine
+
+- [ ] [stateMachine](https://github.com/misje/stateMachine)
+- [ ] [qpc](https://github.com/QuantumLeaps/qpc)
 
 # platform
 
