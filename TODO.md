@@ -18,8 +18,6 @@
 - [ ] [Unity](https://github.com/ThrowTheSwitch/Unity)
 - [ ] [cmockery](https://github.com/google/cmockery)
 - [ ] [googletest](https://github.com/google/googletest)
-- [ ] [letter-shell](https://github.com/NevermindZZT/letter-shell)
-- [ ] [nr_micro_shell](https://github.com/Nrusher/nr_micro_shell)
 - [ ] [CmBacktrace](https://github.com/armink/CmBacktrace)
 
 ## driver
@@ -41,6 +39,8 @@
 ## logger
 
 - [ ] [EasyLogger](https://github.com/armink/EasyLogger)
+- [ ] [letter-shell](https://github.com/NevermindZZT/letter-shell)
+- [ ] [nr_micro_shell](https://github.com/Nrusher/nr_micro_shell)
 
 ## memory
 
