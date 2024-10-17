@@ -16,3 +16,6 @@
 [submodule "components/file system/fatfs/fatfs"]
 	path = components/file system/fatfs/fatfs
 	url = https://github.com/abbrev/fatfs.git
+[submodule "components/file system/littlefs/littlefs"]
+	path = components/file system/littlefs/littlefs
+	url = https://github.com/littlefs-project/littlefs.git
