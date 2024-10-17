@@ -1,3 +1,6 @@
 [submodule "components/crypto/mbedtls/mbedtls"]
 	path = components/crypto/mbedtls/mbedtls
 	url = https://github.com/Mbed-TLS/mbedtls.git
+[submodule "components/debug/Unity/Unity"]
+	path = components/debug/Unity/Unity
+	url = https://github.com/ThrowTheSwitch/Unity.git
