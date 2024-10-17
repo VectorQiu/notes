@@ -1,0 +1,3 @@
+[submodule "components/crypto/mbedtls/mbedtls"]
+	path = components/crypto/mbedtls/mbedtls
+	url = https://github.com/Mbed-TLS/mbedtls.git
