@@ -13,3 +13,6 @@
 [submodule "components/debug/CmBacktrace/CmBacktrace"]
 	path = components/debug/CmBacktrace/CmBacktrace
 	url = https://github.com/armink/CmBacktrace.git
+[submodule "components/file system/fatfs/fatfs"]
+	path = components/file system/fatfs/fatfs
+	url = https://github.com/abbrev/fatfs.git
