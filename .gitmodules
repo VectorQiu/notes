@@ -55,3 +55,6 @@
 [submodule "components/state machine/qpc/qpc"]
 	path = components/state machine/qpc/qpc
 	url = https://github.com/QuantumLeaps/qpc
+[submodule "components/data structure/lwrb/lwrb"]
+	path = components/data structure/lwrb/lwrb
+	url = https://github.com/MaJerle/lwrb.git
