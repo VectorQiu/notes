@@ -210,6 +210,20 @@
 
 - [ ]
 
+## 网络代理
+
+- [ ] clash
+- [ ] v2ray
+- [ ] sing-box
+
+## 软路由
+
+- [ ] openclash
+- [ ] homeproxy
+- [ ] redirect
+- [ ] tproxy
+- [ ]
+
 # Tools
 
 - [ ] Open Flash Loader
