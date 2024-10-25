@@ -1,0 +1,1 @@
+# C style and coding rules template

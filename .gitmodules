@@ -58,3 +58,6 @@
 [submodule "components/data structure/lwrb/lwrb"]
 	path = components/data structure/lwrb/lwrb
 	url = https://github.com/MaJerle/lwrb.git
+[submodule "program/specifications/c_code_style/c-code-style"]
+	path = program/specifications/c_code_style/c-code-style
+	url = https://github.com/MaJerle/c-code-style.git

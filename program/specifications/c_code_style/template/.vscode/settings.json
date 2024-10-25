@@ -1,0 +1,23 @@
+{
+    "C_Cpp.default.compilerPath": "C:\\Program Files\\LLVM\\bin\\clang.exe",
+    "files.associations": {
+        "generl_rules.h": "c",
+        "stdint.h": "c",
+        "stddef.h": "c"
+    },
+    "C_Cpp.doxygen.generatedStyle": "/**",
+    "doxdocgen.cpp.tparamTemplate": "\\tparam          {param} ",
+    "doxdocgen.file.fileTemplate": "\\file            {name}",
+    "doxdocgen.generic.briefTemplate": "\\brief           {text}",
+    "doxdocgen.generic.dateTemplate": "\\date            {date}",
+    "doxdocgen.generic.paramTemplate": "\\param[in]       {param}: ",
+    "doxdocgen.generic.returnTemplate": "\\return          {type} ",
+    "doxdocgen.file.versionTag": "\\version         0.0.1",
+    "doxdocgen.generic.useGitUserEmail": true,
+    "doxdocgen.generic.useGitUserName": true,
+    "doxdocgen.generic.commandSuggestionAddPrefix": true,
+    "doxdocgen.generic.authorTag": "\\author          {author} ({email})",
+    "doxdocgen.generic.customTags": [
+
+    ],
+}
