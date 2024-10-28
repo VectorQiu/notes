@@ -15,7 +15,7 @@ AlignConsecutiveBitFields:          # 设置多个连续位域的对齐选项
   Enabled: true
   AcrossEmptyLines: true
   AcrossComments: true
-AlignConsecutiveDeclarations: None  # 设置多个连续注释的对齐选项
+AlignConsecutiveDeclarations: true  # 设置对齐连续的声明
 AlignEscapedNewlines: Right         # 设置转义换行符（如 \）时的对齐方式
 AlignOperands: Align                # 设置对齐操作数的对齐方式
 SortIncludes: true                  # 是否对包含的头文件进行排序
@@ -141,7 +141,7 @@ PenaltyIndentedWhitespace: 0
 PointerAlignment: Left
 PPIndentWidth: -1
 ReferenceAlignment: Pointer
-ReflowComments: true                      # 是否自动调整注释的行宽，以便符合设定的最大行宽
+ReflowComments: true                     # 是否自动调整注释的行宽，以便符合设定的最大行宽
 RemoveBracesLLVM: false                   # 使用 LLVM 风格的代码格式化时，是否移除一些控制语句或结构中的大括号
 SeparateDefinitionBlocks: Always
 ShortNamespaceLines: 1
