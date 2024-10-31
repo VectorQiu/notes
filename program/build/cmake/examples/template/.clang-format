@@ -141,7 +141,7 @@ PenaltyIndentedWhitespace: 0
 PointerAlignment: Left
 PPIndentWidth: -1
 ReferenceAlignment: Pointer
-ReflowComments: true                     # 是否自动调整注释的行宽，以便符合设定的最大行宽
+ReflowComments: true                      # 是否自动调整注释的行宽，以便符合设定的最大行宽
 RemoveBracesLLVM: false                   # 使用 LLVM 风格的代码格式化时，是否移除一些控制语句或结构中的大括号
 SeparateDefinitionBlocks: Always
 ShortNamespaceLines: 1

@@ -2,25 +2,16 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "C++ Launch",
-            "type": "cppdbg",
+            "name": "MSVC Debug",
+            "type": "cppvsdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/build/your_executable", // 你的可执行文件路径
+            "program": "${workspaceFolder}/build/Debug/src/Debug/main.exe",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
             "environment": [],
             "externalConsole": false,
-            "MIMode": "gdb", // 或 "lldb" 取决于你的调试器
-            "setupCommands": [
-                {
-                    "description": "Enable pretty-printing for gdb",
-                    "text": "-enable-pretty-printing",
-                    "ignoreFailures": true
-                }
-            ],
-            "preLaunchTask": "build", // 可选：指定构建任务
-            "miDebuggerPath": "/usr/bin/gdb", // 根据你的系统修改
+            "preLaunchTask": "build",
         }
     ]
 }

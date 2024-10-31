@@ -8,6 +8,10 @@
         {
             "path": "src/include/**/*.h",
             "recursive": true
+        },
+        {
+            "path": "test/**/*.c",
+            "recursive": true
         }
     ]
 }

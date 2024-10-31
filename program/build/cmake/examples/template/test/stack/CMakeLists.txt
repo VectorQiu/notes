@@ -1,17 +1,6 @@
-# test/stack/CMakeLists.txt
-
-# 添加测试可执行文件
+# Add an executable target named 'test_stack' using the source file 'test_stack.c' located in the 'stack' directory.
 add_executable(test_stack test_stack.c)
 
-# 链接 calculator 和 stack 库
-target_link_libraries(test_stack PRIVATE calculator stack)
-
-# 包含头文件路径
-target_include_directories(test_stack PRIVATE
-    ${CMAKE_SOURCE_DIR}/src/calculator/include
-    ${CMAKE_SOURCE_DIR}/src/stack/include
-)
-
-# 添加测试
-enable_testing()
-add_test(NAME StackTest COMMAND test_stack)
+# Link the 'test_stack' target with the 'unity' and 'stack' libraries privately.
+# This means 'unity' and 'stack' will only be linked for this target and not for any targets that depend on 'test_stack'.
+target_link_libraries(test_stack PRIVATE unity stack)
