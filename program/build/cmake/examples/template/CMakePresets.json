@@ -2,7 +2,7 @@
     "version": 3,
     "configurePresets": [
         {
-            "name": "default",
+            "name": "default-msvc",
             "hidden": true,
             "generator": "Visual Studio 17 2022",
             "binaryDir": "${sourceDir}/build/${presetName}",
@@ -12,29 +12,67 @@
             }
         },
         {
-            "name": "Debug",
-            "inherits": "default",
+            "name": "default-gcc",
+            "hidden": true,
+            "generator": "Ninja",
+            "binaryDir": "${sourceDir}/build/${presetName}",
+            "toolchainFile": "${sourceDir}/cmake/mingw.cmake",
+            "cacheVariables": {
+                "CMAKE_EXPORT_COMPILE_COMMANDS": "ON"
+            }
+        },
+        {
+            "name": "Debug-msvc",
+            "inherits": "default-msvc",
             "cacheVariables": {
                 "CMAKE_BUILD_TYPE": "Debug"
             }
         },
         {
-            "name": "RelWithDebInfo",
-            "inherits": "default",
+            "name": "Debug-gcc",
+            "inherits": "default-gcc",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug"
+            }
+        },
+        {
+            "name": "RelWithDebInfo-msvc",
+            "inherits": "default-msvc",
             "cacheVariables": {
                 "CMAKE_BUILD_TYPE": "RelWithDebInfo"
             }
         },
         {
-            "name": "Release",
-            "inherits": "default",
+            "name": "RelWithDebInfo-gcc",
+            "inherits": "default-gcc",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "RelWithDebInfo"
+            }
+        },
+        {
+            "name": "Release-msvc",
+            "inherits": "default-msvc",
             "cacheVariables": {
                 "CMAKE_BUILD_TYPE": "Release"
             }
         },
         {
-            "name": "MinSizeRel",
-            "inherits": "default",
+            "name": "Release-gcc",
+            "inherits": "default-gcc",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release"
+            }
+        },
+        {
+            "name": "MinSizeRel-msvc",
+            "inherits": "default-msvc",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "MinSizeRel"
+            }
+        },
+        {
+            "name": "MinSizeRel-gcc",
+            "inherits": "default-gcc",
             "cacheVariables": {
                 "CMAKE_BUILD_TYPE": "MinSizeRel"
             }
@@ -42,20 +80,36 @@
     ],
     "buildPresets": [
         {
-            "name": "Debug",
-            "configurePreset": "Debug"
+            "name": "Debug-msvc",
+            "configurePreset": "Debug-msvc"
         },
         {
-            "name": "RelWithDebInfo",
-            "configurePreset": "RelWithDebInfo"
+            "name": "Debug-gcc",
+            "configurePreset": "Debug-gcc"
         },
         {
-            "name": "Release",
-            "configurePreset": "Release"
+            "name": "RelWithDebInfo-msvc",
+            "configurePreset": "RelWithDebInfo-msvc"
         },
         {
-            "name": "MinSizeRel",
-            "configurePreset": "MinSizeRel"
+            "name": "RelWithDebInfo-gcc",
+            "configurePreset": "RelWithDebInfo-gcc"
+        },
+        {
+            "name": "Release-msvc",
+            "configurePreset": "Release-msvc"
+        },
+        {
+            "name": "Release-gcc",
+            "configurePreset": "Release-gcc"
+        },
+        {
+            "name": "MinSizeRel-msvc",
+            "configurePreset": "MinSizeRel-msvc"
+        },
+        {
+            "name": "MinSizeRel-gcc",
+            "configurePreset": "MinSizeRel-gcc"
         }
     ]
 }

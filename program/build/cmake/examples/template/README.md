@@ -8,7 +8,10 @@
 
 - [背景](#背景)
 - [功能](#功能)
-- [安装](#安装)
+- [环境](#环境)
+  - [Linux](#Linux)
+  - [macOS](#macOS)
+  - [Windows](#Windows)
 - [使用方法](#使用方法)
 - [项目结构](#项目结构)
 - [代码格式管理](#代码格式管理)
@@ -26,83 +29,41 @@
 - `clang-format` 代码格式管理
 - 基于 Unity 框架的单元测试
 
-## Windows
+## 环境
 
-### MSVC编译器
+> [Visual Studio Code 中使用 C++](https://code.visualstudio.com/docs/cpp/introvideos-cpp)
+>
+> 对应环境在Visual Studio Code 官网文档中心都有详细说明，点击对应链接查看配置过程
 
-#### 安装
+### **Linux**
 
-- Microsoft C++ 生成工具: [visual-cpp-build-tools](https://visualstudio.microsoft.com/zh-hans/visual-cpp-build-tools/)
-- [Python](https://www.python.org)
-- [LLVM](https://llvm.org/)
-  - [Clang](https://clang.llvm.org/)
-  - [LLDB](https://lldb.llvm.org/)
-  - [ClangFormat](https://clang.llvm.org/docs/ClangFormat.html)
-- [CMake](https://cmake.org/)
-- [Ninja](https://ninja-build.org/)
+> [GCC on Linux](https://code.visualstudio.com/docs/cpp/config-linux)
 
-**验证安装**
 
-```bash
-# 1.Microsoft C++ 生成工具
-# 在 Developer Command Prompt for VS 输入cl
-C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools>cl
-用于 x86 的 Microsoft (R) C/C++ 优化编译器 19.41.34123 版
-版权所有(C) Microsoft Corporation。保留所有权利。
 
-用法: cl [ 选项... ] 文件名... [ /link 链接选项... ]
+### **macOS**
 
-# 2.Python
-python --version
-> Python 3.13.0
+> [Clang on macOS](https://code.visualstudio.com/docs/cpp/config-clang-mac)
 
-# 3.cmke
-cmake --version
-> cmake version 3.30.5
 
-> CMake suite maintained and supported by Kitware (kitware.com/cmake).
 
-# 4.ninja
-ninja --version
-> 1.12.1
+### **Windows**
 
-# 5.clang-format
-clang-format --version
-> clang-format version 19.1.0
-```
-
-### Clang+LLDB
-
-#### 安装
+> [Microsoft C++ on Windows](https://code.visualstudio.com/docs/cpp/config-msvc)
+>
+> [GCC on Windows](https://code.visualstudio.com/docs/cpp/config-mingw)
 
 请确保已安装以下工具：
 
+> ClangFormat包含在LLVM软件包中
+>
+> 安装后将对应软件的`bin`目录，添加到系统环境变量 PATH 中，以便在命令行中方便地访问
+
 - [LLVM](https://llvm.org/)
-  - [Clang](https://clang.llvm.org/)
-  - [LLDB](https://lldb.llvm.org/)
-  - [ClangFormat](https://clang.llvm.org/docs/ClangFormat.html)
-- [CMake](https://cmake.org/)
-- [Ninja](https://ninja-build.org/)
-
-1. 克隆仓库：
-
-    ```bash
-    git clone https://github.com/yourusername/template.git
-    cd template
-    ```
-
-2. 初始化并构建项目：
-
-    ```bash
-    mkdir build
-    cd build
-    cmake -G Ninja ..
-    ninja
-    ```
-
-### GCC+GDB
-
-https://sourceforge.net/projects/mingw-w64/
+  -  [ClangFormat](https://clang.llvm.org/docs/ClangFormat.html): 代码格式化工具
+-  [CMake](https://cmake.org/) : 跨平台的构建系统生成工具
+-  [Ninja ](https://ninja-build.org/): 小巧且高效的构建系统
+- [Python](https://www.python.org): 脚本编写
 
 ## 使用方法
 
@@ -111,8 +72,7 @@ https://sourceforge.net/projects/mingw-w64/
 以下代码展示如何编写并运行一个简单的测试示例：
 
 ```bash
-cd build
-ninja test
+
 ```
 
 ### 代码格式化
@@ -200,3 +160,5 @@ TEMPLATE
 ## 许可证
 
 此项目基于 `MIT `许可证。详细信息请查看 `LICENSE` 文件。
+
+# 附录

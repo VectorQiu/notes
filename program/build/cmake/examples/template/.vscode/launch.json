@@ -1,11 +1,11 @@
 {
-    "version": "0.2.0",
+    "version": "2.0.0",
     "configurations": [
         {
             "name": "MSVC Debug",
             "type": "cppvsdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/build/Debug/src/Debug/main.exe",
+            "program": "${workspaceFolder}/build/Debug-msvc/src/Debug/main.exe",
             "args": [
                 "1+2*(2-3)"
             ],
@@ -14,50 +14,34 @@
             "environment": [],
             "externalConsole": false,
             "preLaunchTask": "Build project",
-        },
-        {
-            "name": "Clang Debug",
-            "type": "cppdbg",
-            "request": "launch",
-            "program": "${workspaceFolder}/build/Debug/src/Debug/main", // 注意去掉 .exe 后缀
-            "args": [
-                "1+2*(2-3)"
-            ],
-            "stopAtEntry": false,
-            "cwd": "${workspaceFolder}",
-            "environment": [],
-            "externalConsole": false,
-            "preLaunchTask": "Build project",
-            "MIMode": "lldb", // 指定使用 LLDB
-            "setupCommands": [
-                {
-                    "description": "Enable pretty-printing for gdb",
-                    "text": "-enable-pretty-printing",
-                    "ignoreFailures": true
-                }
-            ]
         },
         {
             "name": "GCC Debug",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/build/Debug/src/Debug/main", // 注意去掉 .exe 后缀
+            "program": "${workspaceFolder}/build/Debug-gcc/src/main.exe", // 配置可执行程序路径
             "args": [
                 "1+2*(2-3)"
             ],
-            "stopAtEntry": false,
+            "stopAtEntry": false, // 表示调试器在启动时不会停在程序入口点
             "cwd": "${workspaceFolder}",
             "environment": [],
-            "externalConsole": false,
-            "preLaunchTask": "Build project",
-            "MIMode": "gdb", // 指定使用 GDB
+            "externalConsole": false, // 表示不使用外部控制台
+            "MIMode": "gdb", // 指定调试器模式为 GDB
+            "miDebuggerPath": "C:\\msys64\\ucrt64\\bin\\gdb.exe",
             "setupCommands": [
-                {
+                { // 启用 GDB 的美化打印功能
                     "description": "Enable pretty-printing for gdb",
                     "text": "-enable-pretty-printing",
                     "ignoreFailures": true
+                },
+                { // 将反汇编风格设置为 Intel 语法
+                    "description": "Set Disassembly Flavor to Intel",
+                    "text": "-gdb-set disassembly-flavor intel",
+                    "ignoreFailures": true
                 }
-            ]
+            ],
+            "preLaunchTask": "Build project", // 启动调试之前运行的任务
         }
     ],
 }
