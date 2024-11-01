@@ -8,6 +8,40 @@
         "string.h": "c",
         "ctype.h": "c"
     },
+    //
+    "editor.fontSize": 16,
+    "terminal.integrated.fontSize": 14,
+    "[Log]": {
+        "editor.fontSize": 14
+    },
+    "editor.fontFamily": "Fira Code",
+    "editor.fontLigatures": true,
+    "files.autoSave": "afterDelay",
+    "editor.formatOnSave": true,
+    "editor.formatOnPaste": true,
+    "editor.tabSize": 4,
+    "editor.insertSpaces": true,
+    "editor.renderWhitespace": "all",
+    "files.exclude": {
+        "somefolder/": true,
+        "somefile": true
+    },
+    "search.exclude": {
+        "someFolder/": true,
+        "somefile": true
+    },
+    "json.schemas": [
+        {
+            "fileMatch": [
+                "bower.json"
+            ],
+            "url": "https://json.schemastore.org/bower"
+        }
+    ],
+    "editor.rulers": [
+        80
+    ],
+    // doxygen
     "C_Cpp.doxygen.generatedStyle": "/**",
     "doxdocgen.cpp.tparamTemplate": "\\tparam          {param} ",
     "doxdocgen.file.fileTemplate": "\\file            {name}",
@@ -20,7 +54,17 @@
     "doxdocgen.generic.useGitUserName": true,
     "doxdocgen.generic.commandSuggestionAddPrefix": true,
     "doxdocgen.generic.authorTag": "\\author          {author} ({email})",
-    "doxdocgen.generic.customTags": [
-
+    "doxdocgen.generic.customTags": [],
+    // conventionalCommits
+    "conventionalCommits.scopes": [
+        "readme",
+        "test",
+        "script",
+        "docs",
+        "cmake",
+        "build",
+        "vscode",
+        "calculator",
+        "stack",
     ],
 }

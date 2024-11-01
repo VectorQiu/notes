@@ -6,12 +6,58 @@
             "type": "cppvsdbg",
             "request": "launch",
             "program": "${workspaceFolder}/build/Debug/src/Debug/main.exe",
-            "args": [],
+            "args": [
+                "1+2*(2-3)"
+            ],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
             "environment": [],
             "externalConsole": false,
-            "preLaunchTask": "build",
+            "preLaunchTask": "Build project",
+        },
+        {
+            "name": "Clang Debug",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/build/Debug/src/Debug/main", // 注意去掉 .exe 后缀
+            "args": [
+                "1+2*(2-3)"
+            ],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": false,
+            "preLaunchTask": "Build project",
+            "MIMode": "lldb", // 指定使用 LLDB
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ]
+        },
+        {
+            "name": "GCC Debug",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/build/Debug/src/Debug/main", // 注意去掉 .exe 后缀
+            "args": [
+                "1+2*(2-3)"
+            ],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": false,
+            "preLaunchTask": "Build project",
+            "MIMode": "gdb", // 指定使用 GDB
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ]
         }
-    ]
+    ],
 }

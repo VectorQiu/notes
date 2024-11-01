@@ -7,5 +7,6 @@
         "cschlosser.doxdocgen", // 生成Doxygen文档插件
         "Gruntfuggly.todo-tree", // 显示代码中的 TODO、FIXME 等注释插件
         "Wangguixuan.var-translate-en", // 翻译代码中的变量名和注释插件
+        "vscode-icons-team.vscode-icons", // vscode-icons
     ]
 }
