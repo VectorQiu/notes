@@ -37,6 +37,9 @@
 #include <unity.h>
 #include "./stack/stack.h"
 
+/* private variables -------------------------------------------------------- */
+stack_t stack;
+
 /* public functions --------------------------------------------------------- */
 /**
  * \brief           Set up test environment
@@ -48,6 +51,7 @@
 void
 setUp(void) {
     /* This function is called before each test runs. */
+    stack = stack_init(5); /* Create a deep stack of 5 */
 }
 
 /**
@@ -60,6 +64,7 @@ setUp(void) {
 void
 tearDown(void) {
     /* This function is called after each test runs. */
+    stack_free(stack);
 }
 
 /**
@@ -67,147 +72,147 @@ tearDown(void) {
  *
  * This test checks the stack initialization function. It verifies that
  * the stack is created successfully by asserting that the returned
- * pointer is not NULL.
+ * pointer is not NULL and that the stack is initially empty.
  */
 void
 test_stack_init(void) {
-    /* Test the stack initialization. */
-    stack_t stack = stack_init(10);
-    TEST_ASSERT_NOT_NULL(stack); /* Check that the stack is not NULL. */
-    stack_free(stack);           /* Free the allocated stack. */
+    TEST_ASSERT_NOT_NULL(stack);
+    TEST_ASSERT_TRUE(stack_is_empty(stack));
 }
 
 /**
- * \brief           Test pushing and popping from the stack
+ * \brief           Test pushing to the stack
  *
- * This test checks the push and pop operations of the stack. It verifies
- * that pushing an integer onto the stack works correctly and that
- * popping retrieves the correct value. It also tests the behavior
- * when the stack is full.
+ * This test checks the push function of the stack. It verifies that
+ * a node can be successfully pushed onto the stack and that the stack
+ * is no longer empty after the operation.
  */
 void
-test_stack_push_pop(void) {
-    /* Test pushing and popping from the stack. */
-    stack_t stack = stack_init(2);
-    TEST_ASSERT_NOT_NULL(
-        stack); /* Ensure the stack was created successfully. */
+test_stack_push(void) {
+    stack_node_t node;
+    node.data = malloc(sizeof(int32_t));
+    *(int32_t*)node.data = 10;
+    node.type = STACK_TYPE_INT;
 
-    stack_node_t node; /* Declare a stack node. */
+    stack_error_t result = push(stack, node);
+    TEST_ASSERT_EQUAL(STACK_SUCCESS, result);
+    TEST_ASSERT_FALSE(stack_is_empty(stack));
+    TEST_ASSERT_EQUAL(4, stack_remaining_space(stack)); // 5 - 1
 
-    /* Test pushing an integer onto the stack. */
-    int32_t int_data = 42;      /* Integer data to be pushed onto the stack. */
-    node.data = &int_data;      /* Set the node's data to the integer. */
-    node.type = STACK_TYPE_INT; /* Set the node type to integer. */
-    TEST_ASSERT_EQUAL_INT(
-        0, push(stack, node)); /* Push the node and check for success. */
-
-    /* Test popping an integer from the stack. */
-    stack_node_t popped_node; /* Declare a node to hold the popped value. */
-    TEST_ASSERT_EQUAL_INT(
-        0, pop(stack, &popped_node)); /* Pop the node and check for success. */
-    TEST_ASSERT_EQUAL_INT(
-        int_data,
-        *(int32_t*)popped_node
-             .data); /* Verify the popped value matches the pushed value. */
-    free(popped_node.data); /* Free the popped node's data. */
-
-    /* Test stack full condition. */
-    node.data = &int_data;      /* Reuse the integer data for another push. */
-    node.type = STACK_TYPE_INT; /* Ensure the node type is set. */
-    push(stack, node);          /* Push the first node. */
-    node.data = &int_data;      /* Set up for the second push. */
-    TEST_ASSERT_EQUAL_INT(
-        0, push(stack, node)); /* The second push should succeed. */
-    TEST_ASSERT_EQUAL_INT(
-        -2,
-        push(stack,
-             node)); /* The third push should fail since the stack is full. */
-
-    stack_free(stack); /* Free the stack resources. */
+    stack_node_t peeked_node;
+    result = peek(stack, &peeked_node);
+    TEST_ASSERT_EQUAL(STACK_SUCCESS, result);
+    TEST_ASSERT_EQUAL(10, *(int32_t*)peeked_node.data);
 }
 
 /**
- * \brief           Test peeking the top of the stack
+ * \brief           Test popping from the stack
  *
- * This test checks the peek operation of the stack. It verifies that
- * peeking retrieves the top value without removing it from the stack.
+ * This test checks the pop function of the stack. It verifies that
+ * a node can be successfully popped from the stack and that the data
+ * returned is correct.
+ */
+void
+test_stack_pop(void) {
+    stack_node_t node;
+    node.data = malloc(sizeof(int32_t));
+    *(int32_t*)node.data = 20;
+    node.type = STACK_TYPE_INT;
+    push(stack, node);
+
+    stack_node_t popped_node;
+    stack_error_t result = pop(stack, &popped_node);
+    TEST_ASSERT_EQUAL(STACK_SUCCESS, result);
+    TEST_ASSERT_EQUAL(20, *(int32_t*)popped_node.data);
+    free(popped_node.data);
+    TEST_ASSERT_TRUE(stack_is_empty(stack)); // Should be empty after pop
+}
+
+/**
+ * \brief           Test peeking at the top element of the stack
+ *
+ * This test checks the peek function of the stack. It verifies that
+ * the top element can be accessed without removing it from the stack.
  */
 void
 test_stack_peek(void) {
-    /* Test peeking at the top value of the stack. */
-    stack_t stack = stack_init(10);
-    TEST_ASSERT_NOT_NULL(
-        stack); /* Ensure the stack was created successfully. */
+    stack_node_t node;
+    node.data = malloc(sizeof(int32_t));
+    *(int32_t*)node.data = 30;
+    node.type = STACK_TYPE_INT;
+    push(stack, node);
 
-    stack_node_t node;          /* Declare a stack node. */
-    int32_t int_data = 42;      /* Integer data to be pushed onto the stack. */
-    node.data = &int_data;      /* Set the node's data to the integer. */
-    node.type = STACK_TYPE_INT; /* Set the node type to integer. */
-    push(stack, node);          /* Push the node onto the stack. */
-
-    stack_node_t peeked_node; /* Declare a node to hold the peeked value. */
-    TEST_ASSERT_EQUAL_INT(
-        0, peek(stack,
-                &peeked_node)); /* Peek at the stack and check for success. */
-    TEST_ASSERT_EQUAL_INT(
-        int_data,
-        *(int32_t*)peeked_node
-             .data); /* Verify the peeked value matches the pushed value. */
-
-    stack_free(stack); /* Free the stack resources. */
+    stack_node_t peeked_node;
+    stack_error_t result = peek(stack, &peeked_node);
+    TEST_ASSERT_EQUAL(STACK_SUCCESS, result);
+    TEST_ASSERT_EQUAL(30, *(int32_t*)peeked_node.data);
 }
 
 /**
- * \brief           Test stack empty and full states
+ * \brief           Test if the stack is full
  *
- * This test checks the functions that determine if the stack is empty
- * or full. It verifies the states before and after pushing elements onto
- * the stack.
+ * This test checks the is_full function of the stack. It verifies
+ * that the stack reports correctly when it is full after multiple pushes.
  */
 void
-test_stack_empty_full(void) {
-    /* Test checking if the stack is empty or full. */
-    stack_t stack = stack_init(2);
-    TEST_ASSERT_NOT_NULL(
-        stack); /* Ensure the stack was created successfully. */
-    TEST_ASSERT_EQUAL_INT(
-        1,
-        stack_is_empty(stack)); /* Check that the stack is empty initially. */
-    TEST_ASSERT_EQUAL_INT(
-        0,
-        stack_is_full(stack)); /* Check that the stack is not full initially. */
-
-    int32_t int_data = 42; /* Integer data to be pushed onto the stack. */
-    stack_node_t node = {
-        .data = &int_data,
-        .type = STACK_TYPE_INT}; /* Create a stack node for the integer. */
-    push(stack, node);           /* Push the node onto the stack. */
-    TEST_ASSERT_EQUAL_INT(
-        0,
-        stack_is_empty(stack)); /* Check that the stack is no longer empty. */
-    TEST_ASSERT_EQUAL_INT(
-        0, stack_is_full(stack)); /* Check that the stack is still not full. */
-
-    push(stack, node); /* Push the second node onto the stack. */
-    TEST_ASSERT_EQUAL_INT(
-        1, stack_is_full(stack)); /* Now the stack should be full. */
-
-    stack_free(stack); /* Free the stack resources. */
+test_stack_is_full(void) {
+    for (int i = 0; i < 5; i++) {
+        stack_node_t node;
+        node.data = malloc(sizeof(int32_t));
+        *(int32_t*)node.data = i;
+        node.type = STACK_TYPE_INT;
+        push(stack, node);
+    }
+    TEST_ASSERT_TRUE(stack_is_full(stack));
 }
 
 /**
- * \brief           Test stack free function
+ * \brief           Test remaining space in the stack
  *
- * This test checks the stack free function to ensure it can release
- * the memory allocated for the stack without errors.
+ * This test checks the remaining_space function of the stack. It verifies
+ * that the correct number of available spaces is reported before and
+ * after pushing an element onto the stack.
  */
 void
-test_stack_free(void) {
-    /* Test freeing the stack. */
-    stack_t stack = stack_init(2);
-    TEST_ASSERT_NOT_NULL(
-        stack);        /* Ensure the stack was created successfully. */
-    stack_free(stack); /* Check if the stack can be freed without issues. */
+test_stack_remaining_space(void) {
+    TEST_ASSERT_EQUAL(5, stack_remaining_space(stack)); // Initially, 5 spaces
+    stack_node_t node;
+    node.data = malloc(sizeof(int32_t));
+    *(int32_t*)node.data = 10;
+    node.type = STACK_TYPE_INT;
+    push(stack, node);
+    TEST_ASSERT_EQUAL(4, stack_remaining_space(stack)); // After one push
+}
+
+/**
+ * \brief           Test popping from an empty stack
+ *
+ * This test checks the pop function when the stack is empty. It verifies
+ * that the correct error code is returned when trying to pop from an empty
+ * stack.
+ */
+void
+test_stack_pop_empty(void) {
+    stack_node_t node;
+    stack_error_t result = pop(stack, &node);
+    TEST_ASSERT_EQUAL(STACK_ERROR_EMPTY, result);
+}
+
+/**
+ * \brief           Test pushing an invalid type onto the stack
+ *
+ * This test checks the push function when an invalid node type is used.
+ * It verifies that the correct error code is returned when trying to push an
+ * invalid type.
+ */
+void
+test_stack_push_invalid_type(void) {
+    stack_node_t node;
+    node.data = NULL; // Invalid type
+    node.type = STACK_TYPE_NONE;
+
+    stack_error_t result = push(stack, node);
+    TEST_ASSERT_EQUAL(STACK_ERROR_INVALID_TYPE, result);
 }
 
 /* private functions -------------------------------------------------------- */
@@ -220,15 +225,16 @@ test_stack_free(void) {
 int
 main(void) {
     /* Main function to run the tests. */
-    UNITY_BEGIN(); /* Initialize the Unity test framework. */
-
-    RUN_TEST(test_stack_init);       /* Run the stack initialization test. */
-    RUN_TEST(test_stack_push_pop);   /* Run the push and pop test. */
-    RUN_TEST(test_stack_peek);       /* Run the peek test. */
-    RUN_TEST(test_stack_empty_full); /* Run the empty/full test. */
-    RUN_TEST(test_stack_free);       /* Run the free test. */
-
-    return UNITY_END(); /* Finalize and return the test results. */
+    UNITY_BEGIN();
+    RUN_TEST(test_stack_init);
+    RUN_TEST(test_stack_push);
+    RUN_TEST(test_stack_pop);
+    RUN_TEST(test_stack_peek);
+    RUN_TEST(test_stack_is_full);
+    RUN_TEST(test_stack_remaining_space);
+    RUN_TEST(test_stack_pop_empty);
+    RUN_TEST(test_stack_push_invalid_type);
+    return UNITY_END();
 }
 
 /* ----------------------------- end of file -------------------------------- */

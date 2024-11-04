@@ -39,10 +39,13 @@
 #include <string.h>
 
 /* private typedef function ------------------------------------------------- */
+/**
+ * \brief           Private stack structure
+ */
 typedef struct {
-    size_t num;
-    stack_node_t* nodes;
-    int32_t top;
+    int32_t num;         /*!< Maximum number of elements in the stack */
+    stack_node_t* nodes; /*!< Pointer to stack nodes */
+    int32_t top;         /*!< Index of the top element in the stack */
 } prv_stack_t;
 
 /* public functions --------------------------------------------------------- */
@@ -54,7 +57,7 @@ typedef struct {
  *                  otherwise
  */
 stack_t
-stack_init(size_t depth) {
+stack_init(int32_t depth) {
     prv_stack_t* stack;
 
     stack = malloc(sizeof(prv_stack_t));
@@ -78,30 +81,29 @@ stack_init(size_t depth) {
  *
  * \param[in]       s: Pointer of stack structure
  * \param[in]       node: Push stack node
- * \return          Successfully returned 0
- *                  When the stack pointer is NULL, return -1
- *                  Stack full, return -2
- *                  Stack node type invalid, return -4
+ * \return          \ref:STACK_SUCCESS on success, member of \ref stack_error_t
+ *                  otherwise
  */
-int8_t
+stack_error_t
 push(stack_t s, stack_node_t node) {
     if (s == NULL) {
-        return -1;
+        return STACK_ERROR_NULL_POINTER;
     }
 
     if (stack_is_full(s)) {
-        return -2;
+        return STACK_ERROR_FULL;
     }
 
     if (node.type <= STACK_TYPE_NONE || node.type >= STACK_TYPE_MAX) {
-        return -4;
+        return STACK_ERROR_INVALID_TYPE;
     }
 
     prv_stack_t* stack = s;
-    stack->top += 1;
+    ++stack->top;
     stack->nodes[stack->top].data = malloc(sizeof(node.data));
     if (stack->nodes[stack->top].data == NULL) {
-        return -5;
+        --stack->top;
+        return STACK_ERROR_MEMORY;
     }
 
     switch (node.type) {
@@ -122,11 +124,12 @@ push(stack_t s, stack_node_t node) {
             break;
         default:
             free(stack->nodes[stack->top].data);
-            return -4; /* Invalid type */
+            --stack->top;
+            return STACK_ERROR_INVALID_TYPE; /* Invalid type */
     }
     stack->nodes[stack->top].type = node.type;
 
-    return 0;
+    return STACK_SUCCESS;
 }
 
 /**
@@ -134,24 +137,25 @@ push(stack_t s, stack_node_t node) {
  *
  * \param[in]       s: Pointer of stack structure
  * \param[in]       node: Pop stack node
- * \return          Successfully returned 0
- *                  When the stack pointer is NULL, return -1
- *                  Stack empty, return -3
+ * \return          \ref:STACK_SUCCESS on success, member of \ref stack_error_t
+ *                  otherwise
+ * \note            The caller is responsible for freeing the memory of the
+ *                  popped node's data after use to avoid memory leaks.
  */
-int8_t
+stack_error_t
 pop(stack_t s, stack_node_t* node) {
     if (s == NULL) {
-        return -1;
+        return STACK_ERROR_NULL_POINTER;
     }
 
     if (stack_is_empty(s)) {
-        return -3;
+        return STACK_ERROR_EMPTY;
     }
 
     prv_stack_t* stack = s;
     *node = stack->nodes[stack->top];
-    stack->top -= 1;
-    return 0;
+    --stack->top;
+    return STACK_SUCCESS;
 }
 
 /**
@@ -159,23 +163,22 @@ pop(stack_t s, stack_node_t* node) {
  *
  * \param[in]       s: Pointer of stack structure
  * \param[in]       node: The node of the element at the top of the stack
- * \return          Successfully returned 0
- *                  When the stack pointer is NULL, return -1
- *                  Stack empty, return -3
+ * \return          \ref:STACK_SUCCESS on success, member of \ref stack_error_t
+ *                  otherwise
  */
-int8_t
+stack_error_t
 peek(stack_t s, stack_node_t* node) {
     if (s == NULL) {
-        return -1;
+        return STACK_ERROR_NULL_POINTER;
     }
 
     if (stack_is_empty(s)) {
-        return -3;
+        return STACK_ERROR_EMPTY;
     }
 
     prv_stack_t* stack = s;
     *node = stack->nodes[stack->top];
-    return 0;
+    return STACK_SUCCESS;
 }
 
 /**
@@ -212,6 +215,23 @@ stack_is_full(stack_t s) {
 
     prv_stack_t* stack = s;
     return (stack->top == stack->num - 1) ? 1 : 0;
+}
+
+/**
+ * \brief           Get the remaining space in the stack
+ *
+ * \param[in]       s: Pointer to the stack structure
+ * \return          The number of available spaces in the stack,
+ *                  or -1 if the stack pointer is NULL
+ */
+int32_t
+stack_remaining_space(stack_t s) {
+    if (s == NULL) {
+        return -1; /* Return -1 if the stack pointer is NULL */
+    }
+
+    prv_stack_t* stack = s;
+    return stack->num - (stack->top + 1); /* Total capacity minus used spaces */
 }
 
 /**

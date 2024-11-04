@@ -50,31 +50,51 @@ extern "C" {
  */
 
 /* public typedef enum ------------------------------------------------------ */
+/**
+ * \brief           Data types that can be stored in the stack
+ */
 typedef enum {
-    STACK_TYPE_NONE = 0,
-    STACK_TYPE_CHAR,
-    STACK_TYPE_STRING,
-    STACK_TYPE_INT,
-    STACK_TYPE_FLOAT,
-    STACK_TYPE_DOUBLE,
-    STACK_TYPE_MAX,
+    STACK_TYPE_NONE = 0, /*!< No type (invalid) */
+    STACK_TYPE_CHAR,     /*!< Character type */
+    STACK_TYPE_STRING,   /*!< String type */
+    STACK_TYPE_INT,      /*!< Integer type */
+    STACK_TYPE_FLOAT,    /*!< Float type */
+    STACK_TYPE_DOUBLE,   /*!< Double type */
+    STACK_TYPE_MAX,      /*!< Maximum type value (used for validation) */
 } stack_data_type_e;
 
+/**
+ * \brief           Stack error codes
+ */
+typedef enum {
+    STACK_SUCCESS = 0,             /*!< Operation successful */
+    STACK_ERROR_NULL_POINTER = -1, /*!< Null pointer error */
+    STACK_ERROR_FULL = -2,         /*!< Stack full error */
+    STACK_ERROR_EMPTY = -3,        /*!< Stack empty error */
+    STACK_ERROR_INVALID_TYPE = -4, /*!< Invalid node type error */
+    STACK_ERROR_MEMORY = -5        /*!< Memory allocation error */
+} stack_error_t;
+
 /* public typedef struct ---------------------------------------------------- */
+/**
+ * \brief           Stack node structur
+ *
+ */
 typedef struct {
-    void* data;
-    stack_data_type_e type;
+    void* data;             /*!< Pointer to the data stored in the node */
+    stack_data_type_e type; /*!< Type of the data stored in the node */
 } stack_node_t;
 
 typedef void* stack_t;
 
 /* public functions --------------------------------------------------------- */
-stack_t stack_init(size_t depth);
-int8_t push(stack_t s, stack_node_t node);
-int8_t pop(stack_t s, stack_node_t* node);
-int8_t peek(stack_t s, stack_node_t* node);
+stack_t stack_init(int32_t depth);
+stack_error_t push(stack_t s, stack_node_t node);
+stack_error_t pop(stack_t s, stack_node_t* node);
+stack_error_t peek(stack_t s, stack_node_t* node);
 int8_t stack_is_empty(stack_t s);
 int8_t stack_is_full(stack_t s);
+int32_t stack_remaining_space(stack_t s);
 void stack_free(stack_t s);
 /**
  * \}
