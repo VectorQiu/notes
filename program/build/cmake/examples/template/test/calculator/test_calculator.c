@@ -70,7 +70,9 @@ tearDown(void) {
 void
 test_evaluate_expression_simple_addition(void) {
     const char* expression = "3 + 5";
-    int32_t result = evaluate_expression(expression);
+    int32_t result;
+    eval_error_t error_code = evaluate_expression(expression, &result);
+    TEST_ASSERT_EQUAL(EVAL_SUCCESS, error_code);
     TEST_ASSERT_EQUAL_INT32(8, result);
 }
 
@@ -83,7 +85,9 @@ test_evaluate_expression_simple_addition(void) {
 void
 test_evaluate_expression_simple_subtraction(void) {
     const char* expression = "10 - 4";
-    int32_t result = evaluate_expression(expression);
+    int32_t result;
+    eval_error_t error_code = evaluate_expression(expression, &result);
+    TEST_ASSERT_EQUAL(EVAL_SUCCESS, error_code);
     TEST_ASSERT_EQUAL_INT32(6, result);
 }
 
@@ -96,7 +100,9 @@ test_evaluate_expression_simple_subtraction(void) {
 void
 test_evaluate_expression_simple_multiplication(void) {
     const char* expression = "3 * 4";
-    int32_t result = evaluate_expression(expression);
+    int32_t result;
+    eval_error_t error_code = evaluate_expression(expression, &result);
+    TEST_ASSERT_EQUAL(EVAL_SUCCESS, error_code);
     TEST_ASSERT_EQUAL_INT32(12, result);
 }
 
@@ -109,7 +115,9 @@ test_evaluate_expression_simple_multiplication(void) {
 void
 test_evaluate_expression_simple_division(void) {
     const char* expression = "8 / 2";
-    int32_t result = evaluate_expression(expression);
+    int32_t result;
+    eval_error_t error_code = evaluate_expression(expression, &result);
+    TEST_ASSERT_EQUAL(EVAL_SUCCESS, error_code);
     TEST_ASSERT_EQUAL_INT32(4, result);
 }
 
@@ -122,7 +130,9 @@ test_evaluate_expression_simple_division(void) {
 void
 test_evaluate_expression_with_parentheses(void) {
     const char* expression = "3 + (2 * 5)";
-    int32_t result = evaluate_expression(expression);
+    int32_t result;
+    eval_error_t error_code = evaluate_expression(expression, &result);
+    TEST_ASSERT_EQUAL(EVAL_SUCCESS, error_code);
     TEST_ASSERT_EQUAL_INT32(13, result);
 }
 
@@ -135,7 +145,9 @@ test_evaluate_expression_with_parentheses(void) {
 void
 test_evaluate_expression_complex(void) {
     const char* expression = "3 + 5 * (2 - 8)";
-    int32_t result = evaluate_expression(expression);
+    int32_t result;
+    eval_error_t error_code = evaluate_expression(expression, &result);
+    TEST_ASSERT_EQUAL(EVAL_SUCCESS, error_code);
     TEST_ASSERT_EQUAL_INT32(-27, result);
 }
 
@@ -149,7 +161,9 @@ test_evaluate_expression_complex(void) {
 void
 test_evaluate_expression_division_by_zero(void) {
     const char* expression = "10 / 0";
-    int32_t result = evaluate_expression(expression);
+    int32_t result;
+    eval_error_t error_code = evaluate_expression(expression, &result);
+    TEST_ASSERT_EQUAL(EVAL_ERROR_DIV_BY_ZERO, error_code);
     TEST_ASSERT_EQUAL_INT32(0, result); /* Assuming your implementation returns
                                            0 on division by zero */
 }
@@ -164,7 +178,9 @@ test_evaluate_expression_division_by_zero(void) {
 void
 test_evaluate_expression_invalid_operator(void) {
     const char* expression = "5 % 2"; /* Invalid operator */
-    int32_t result = evaluate_expression(expression);
+    int32_t result;
+    eval_error_t error_code = evaluate_expression(expression, &result);
+    TEST_ASSERT_EQUAL(EVAL_ERROR_INVALID_OPERATOR, error_code);
     TEST_ASSERT_EQUAL_INT32(0, result); /* Assuming your implementation returns
                                            0 for invalid operators */
 }

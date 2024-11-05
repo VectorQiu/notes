@@ -48,8 +48,23 @@ extern "C" {
  * \brief           Calculator manager
  * \{
  */
+/* public typedef enum ------------------------------------------------------ */
+/**
+ * \brief           Enum for evaluate_expression error codes
+ */
+typedef enum {
+    EVAL_SUCCESS = 0,            /*!< Success: Evaluation completed */
+    EVAL_ERROR_STACK_INIT,       /*!< Error: Stack initialization failed */
+    EVAL_ERROR_MEMORY,           /*!< Error: Memory allocation failed */
+    EVAL_ERROR_NULL_POINTER,     /*!< Error: Invalid operator or invalid
+                                  input expression */
+    EVAL_ERROR_DIV_BY_ZERO,      /*!< Error: Division by zero */
+    EVAL_ERROR_INVALID_OPERATOR, /*!< Error: Invalid operator */
+
+} eval_error_t;
+
 /* public functions --------------------------------------------------------- */
-int32_t evaluate_expression(const char* expression);
+eval_error_t evaluate_expression(const char* expression, int32_t* result);
 /**
  * \}
  */

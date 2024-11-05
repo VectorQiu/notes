@@ -36,25 +36,34 @@
 #include "./stack/stack.h"
 
 #include <stdlib.h>
-#include <string.h>
 
 /* private typedef function ------------------------------------------------- */
 /**
- * \brief           Private stack structure
+ * \brief           Stack structure for holding elements.
+ *
+ * This structure represents a stack and contains information about
+ * the maximum number of elements, a pointer to the stack nodes, and
+ * the index of the top element.
  */
 typedef struct {
-    int32_t num;         /*!< Maximum number of elements in the stack */
-    stack_node_t* nodes; /*!< Pointer to stack nodes */
-    int32_t top;         /*!< Index of the top element in the stack */
+    int32_t num;          /*!< Maximum number of elements the stack can hold */
+    stack_node_t** nodes; /*!< Pointer to an array of stack nodes */
+    int32_t top; /*!< Index of the top element in the stack (initialized to -1
+                    when empty) */
 } prv_stack_t;
 
 /* public functions --------------------------------------------------------- */
 /**
- * \brief           Stack structure initialization
+ * \brief           Initialize a stack with a given depth.
  *
- * \param[in]       depth: The depth of the stack
- * \return          Pointer to output Stack structure on success, `NULL`
- *                  otherwise
+ * This function creates and initializes a stack. It allocates memory for the
+ * stack structure and its internal nodes array based on the specified depth.
+ * The stack is initialized with a top index of -1 to indicate that the stack is
+ * empty.
+ *
+ * \param[in]       depth: The maximum number of elements the stack can hold.
+ * \return          A pointer to the initialized stack. If memory allocation
+ *                  fails, NULL is returned.
  */
 stack_t
 stack_init(int32_t depth) {
@@ -67,7 +76,7 @@ stack_init(int32_t depth) {
 
     stack->num = depth;
     stack->top = -1;
-    stack->nodes = malloc(depth * sizeof(stack_node_t));
+    stack->nodes = malloc(depth * sizeof(stack_node_t*));
     if (stack->nodes == NULL) {
         free(stack);
         return NULL;
@@ -77,15 +86,20 @@ stack_init(int32_t depth) {
 }
 
 /**
- * \brief           Push stacks
+ * \brief           Push an element onto the stack.
  *
- * \param[in]       s: Pointer of stack structure
- * \param[in]       node: Push stack node
+ * This function adds a new element (node) to the top of the stack.
+ * It performs validation checks to ensure the stack and node are
+ * valid and that the stack is not full.
+ *
+ * \param[in]       s: A pointer to the stack to which the element will be
+ *                  added.
+ * \param[in]       node: A pointer to the stack node to be pushed.
  * \return          \ref:STACK_SUCCESS on success, member of \ref stack_error_t
  *                  otherwise
  */
 stack_error_t
-push(stack_t s, stack_node_t node) {
+push(stack_t s, stack_node_t* node) {
     if (s == NULL) {
         return STACK_ERROR_NULL_POINTER;
     }
@@ -94,40 +108,14 @@ push(stack_t s, stack_node_t node) {
         return STACK_ERROR_FULL;
     }
 
-    if (node.type <= STACK_TYPE_NONE || node.type >= STACK_TYPE_MAX) {
+    if (node == NULL || node->type <= STACK_TYPE_NONE
+        || node->type >= STACK_TYPE_MAX) {
         return STACK_ERROR_INVALID_TYPE;
     }
 
     prv_stack_t* stack = s;
     ++stack->top;
-    stack->nodes[stack->top].data = malloc(sizeof(node.data));
-    if (stack->nodes[stack->top].data == NULL) {
-        --stack->top;
-        return STACK_ERROR_MEMORY;
-    }
-
-    switch (node.type) {
-        case STACK_TYPE_CHAR:
-            *(char*)stack->nodes[stack->top].data = *(char*)node.data;
-            break;
-        case STACK_TYPE_STRING:
-            stack->nodes[stack->top].data = strdup((char*)node.data);
-            break;
-        case STACK_TYPE_INT:
-            *(int32_t*)stack->nodes[stack->top].data = *(int32_t*)node.data;
-            break;
-        case STACK_TYPE_FLOAT:
-            *(float*)stack->nodes[stack->top].data = *(float*)node.data;
-            break;
-        case STACK_TYPE_DOUBLE:
-            *(double*)stack->nodes[stack->top].data = *(double*)node.data;
-            break;
-        default:
-            free(stack->nodes[stack->top].data);
-            --stack->top;
-            return STACK_ERROR_INVALID_TYPE; /* Invalid type */
-    }
-    stack->nodes[stack->top].type = node.type;
+    stack->nodes[stack->top] = node;
 
     return STACK_SUCCESS;
 }
@@ -139,11 +127,9 @@ push(stack_t s, stack_node_t node) {
  * \param[in]       node: Pop stack node
  * \return          \ref:STACK_SUCCESS on success, member of \ref stack_error_t
  *                  otherwise
- * \note            The caller is responsible for freeing the memory of the
- *                  popped node's data after use to avoid memory leaks.
  */
 stack_error_t
-pop(stack_t s, stack_node_t* node) {
+pop(stack_t s, stack_node_t** node) {
     if (s == NULL) {
         return STACK_ERROR_NULL_POINTER;
     }
@@ -167,7 +153,7 @@ pop(stack_t s, stack_node_t* node) {
  *                  otherwise
  */
 stack_error_t
-peek(stack_t s, stack_node_t* node) {
+peek(stack_t s, stack_node_t** node) {
     if (s == NULL) {
         return STACK_ERROR_NULL_POINTER;
     }
@@ -185,14 +171,12 @@ peek(stack_t s, stack_node_t* node) {
  * \brief           Check if the stack is empty
  *
  * \param[in]       s: Pointer of stack structure
- * \return          The stack is empty and returns 1
- *                  The stack is not empty and returns 0
- *                  When the stack pointer is NULL, return -1
+ * \return          The stack is empty and returns 1, otherwise returns 0
  */
 int8_t
 stack_is_empty(stack_t s) {
     if (s == NULL) {
-        return -1;
+        return 0;
     }
 
     prv_stack_t* stack = s;
@@ -203,14 +187,12 @@ stack_is_empty(stack_t s) {
  * \brief           Check if the stack is full
  *
  * \param[in]       s: Pointer of stack structure
- * \return          The stack is full and returns 1
- *                  The stack is not full and returns 0
- *                  When the stack pointer is NULL, return -1
+ * \return          The stack is full and returns 1, otherwise returns 0
  */
 int8_t
 stack_is_full(stack_t s) {
     if (s == NULL) {
-        return -1;
+        return 0;
     }
 
     prv_stack_t* stack = s;
@@ -245,14 +227,16 @@ stack_free(stack_t s) {
         return;
     }
 
-    prv_stack_t* stack = s;
     while (!stack_is_empty(s)) {
-        stack_node_t node;
+        stack_node_t* node;
         pop(s, &node);
-        if (node.data != NULL) {
-            free(node.data);
+        if (node->data != NULL) {
+            free(node->data);
         }
+        free(node);
     }
+
+    prv_stack_t* stack = s;
     free(stack->nodes);
     free(stack);
 }

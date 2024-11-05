@@ -89,20 +89,20 @@ test_stack_init(void) {
  */
 void
 test_stack_push(void) {
-    stack_node_t node;
-    node.data = malloc(sizeof(int32_t));
-    *(int32_t*)node.data = 10;
-    node.type = STACK_TYPE_INT;
+    stack_node_t* node = malloc(sizeof(stack_node_t));
+    node->data = malloc(sizeof(int32_t));
+    *(int32_t*)node->data = 10;
+    node->type = STACK_TYPE_INT;
 
     stack_error_t result = push(stack, node);
     TEST_ASSERT_EQUAL(STACK_SUCCESS, result);
     TEST_ASSERT_FALSE(stack_is_empty(stack));
     TEST_ASSERT_EQUAL(4, stack_remaining_space(stack)); // 5 - 1
 
-    stack_node_t peeked_node;
+    stack_node_t* peeked_node = NULL;
     result = peek(stack, &peeked_node);
     TEST_ASSERT_EQUAL(STACK_SUCCESS, result);
-    TEST_ASSERT_EQUAL(10, *(int32_t*)peeked_node.data);
+    TEST_ASSERT_EQUAL(10, *(int32_t*)peeked_node->data);
 }
 
 /**
@@ -114,17 +114,19 @@ test_stack_push(void) {
  */
 void
 test_stack_pop(void) {
-    stack_node_t node;
-    node.data = malloc(sizeof(int32_t));
-    *(int32_t*)node.data = 20;
-    node.type = STACK_TYPE_INT;
-    push(stack, node);
-
-    stack_node_t popped_node;
-    stack_error_t result = pop(stack, &popped_node);
+    stack_node_t* node = malloc(sizeof(stack_node_t));
+    node->data = malloc(sizeof(int32_t));
+    *(int32_t*)node->data = 20;
+    node->type = STACK_TYPE_INT;
+    stack_error_t result = push(stack, node);
     TEST_ASSERT_EQUAL(STACK_SUCCESS, result);
-    TEST_ASSERT_EQUAL(20, *(int32_t*)popped_node.data);
-    free(popped_node.data);
+
+    stack_node_t* popped_node = NULL;
+    result = pop(stack, &popped_node);
+    TEST_ASSERT_EQUAL(STACK_SUCCESS, result);
+    TEST_ASSERT_EQUAL(20, *(int32_t*)popped_node->data);
+    free(popped_node->data);
+    free(popped_node);
     TEST_ASSERT_TRUE(stack_is_empty(stack)); // Should be empty after pop
 }
 
@@ -136,16 +138,17 @@ test_stack_pop(void) {
  */
 void
 test_stack_peek(void) {
-    stack_node_t node;
-    node.data = malloc(sizeof(int32_t));
-    *(int32_t*)node.data = 30;
-    node.type = STACK_TYPE_INT;
-    push(stack, node);
-
-    stack_node_t peeked_node;
-    stack_error_t result = peek(stack, &peeked_node);
+    stack_node_t* node = malloc(sizeof(stack_node_t));
+    node->data = malloc(sizeof(int32_t));
+    *(int32_t*)node->data = 30;
+    node->type = STACK_TYPE_INT;
+    stack_error_t result = push(stack, node);
     TEST_ASSERT_EQUAL(STACK_SUCCESS, result);
-    TEST_ASSERT_EQUAL(30, *(int32_t*)peeked_node.data);
+
+    stack_node_t* peeked_node = NULL;
+    result = peek(stack, &peeked_node);
+    TEST_ASSERT_EQUAL(STACK_SUCCESS, result);
+    TEST_ASSERT_EQUAL(30, *(int32_t*)peeked_node->data);
 }
 
 /**
@@ -157,11 +160,12 @@ test_stack_peek(void) {
 void
 test_stack_is_full(void) {
     for (int i = 0; i < 5; i++) {
-        stack_node_t node;
-        node.data = malloc(sizeof(int32_t));
-        *(int32_t*)node.data = i;
-        node.type = STACK_TYPE_INT;
-        push(stack, node);
+        stack_node_t* node = malloc(sizeof(stack_node_t));
+        node->data = malloc(sizeof(int32_t));
+        *(int32_t*)node->data = i;
+        node->type = STACK_TYPE_INT;
+        stack_error_t result = push(stack, node);
+        TEST_ASSERT_EQUAL(STACK_SUCCESS, result);
     }
     TEST_ASSERT_TRUE(stack_is_full(stack));
 }
@@ -176,11 +180,14 @@ test_stack_is_full(void) {
 void
 test_stack_remaining_space(void) {
     TEST_ASSERT_EQUAL(5, stack_remaining_space(stack)); // Initially, 5 spaces
-    stack_node_t node;
-    node.data = malloc(sizeof(int32_t));
-    *(int32_t*)node.data = 10;
-    node.type = STACK_TYPE_INT;
-    push(stack, node);
+
+    stack_node_t* node = malloc(sizeof(stack_node_t));
+    node->data = malloc(sizeof(int32_t));
+    *(int32_t*)node->data = 10;
+    node->type = STACK_TYPE_INT;
+    stack_error_t result = push(stack, node);
+    TEST_ASSERT_EQUAL(STACK_SUCCESS, result);
+
     TEST_ASSERT_EQUAL(4, stack_remaining_space(stack)); // After one push
 }
 
@@ -193,7 +200,7 @@ test_stack_remaining_space(void) {
  */
 void
 test_stack_pop_empty(void) {
-    stack_node_t node;
+    stack_node_t* node = NULL;
     stack_error_t result = pop(stack, &node);
     TEST_ASSERT_EQUAL(STACK_ERROR_EMPTY, result);
 }
@@ -207,9 +214,9 @@ test_stack_pop_empty(void) {
  */
 void
 test_stack_push_invalid_type(void) {
-    stack_node_t node;
-    node.data = NULL; // Invalid type
-    node.type = STACK_TYPE_NONE;
+    stack_node_t* node = malloc(sizeof(stack_node_t));
+    node->data = NULL; // Invalid type
+    node->type = STACK_TYPE_NONE;
 
     stack_error_t result = push(stack, node);
     TEST_ASSERT_EQUAL(STACK_ERROR_INVALID_TYPE, result);

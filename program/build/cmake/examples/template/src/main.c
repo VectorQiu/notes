@@ -45,8 +45,13 @@ main(int32_t argc, char* argv[]) {
     }
 
     const char* expression = argv[1];
-    int32_t result = evaluate_expression(expression);
-    printf("Result: %d\n", result);
+    int32_t result;
+    eval_error_t error_code = evaluate_expression(expression, &result);
+    if (error_code == EVAL_SUCCESS) {
+        printf("Result: %d\n", result);
+    } else {
+        printf("Entering expression is wrong.\n");
+    }
     return 0;
 }
 

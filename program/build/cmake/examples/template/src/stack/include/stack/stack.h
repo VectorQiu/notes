@@ -67,12 +67,12 @@ typedef enum {
  * \brief           Stack error codes
  */
 typedef enum {
-    STACK_SUCCESS = 0,             /*!< Operation successful */
-    STACK_ERROR_NULL_POINTER = -1, /*!< Null pointer error */
-    STACK_ERROR_FULL = -2,         /*!< Stack full error */
-    STACK_ERROR_EMPTY = -3,        /*!< Stack empty error */
+    STACK_ERROR_MEMORY = -5,       /*!< Memory allocation error */
     STACK_ERROR_INVALID_TYPE = -4, /*!< Invalid node type error */
-    STACK_ERROR_MEMORY = -5        /*!< Memory allocation error */
+    STACK_ERROR_EMPTY = -3,        /*!< Stack empty error */
+    STACK_ERROR_FULL = -2,         /*!< Stack full error */
+    STACK_ERROR_NULL_POINTER = -1, /*!< Null pointer error */
+    STACK_SUCCESS = 0,             /*!< Operation successful */
 } stack_error_t;
 
 /* public typedef struct ---------------------------------------------------- */
@@ -89,13 +89,14 @@ typedef void* stack_t;
 
 /* public functions --------------------------------------------------------- */
 stack_t stack_init(int32_t depth);
-stack_error_t push(stack_t s, stack_node_t node);
-stack_error_t pop(stack_t s, stack_node_t* node);
-stack_error_t peek(stack_t s, stack_node_t* node);
+stack_error_t push(stack_t s, stack_node_t* node);
+stack_error_t pop(stack_t s, stack_node_t** node);
+stack_error_t peek(stack_t s, stack_node_t** node);
 int8_t stack_is_empty(stack_t s);
 int8_t stack_is_full(stack_t s);
 int32_t stack_remaining_space(stack_t s);
 void stack_free(stack_t s);
+
 /**
  * \}
  */
