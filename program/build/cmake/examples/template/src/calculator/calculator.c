@@ -98,10 +98,11 @@ evaluate_expression(const char* expression, int32_t* result) {
         if (isspace(*ptr)) { /* Skip spaces */
             ++ptr;
         } else if (isdigit(*ptr)) { /* Process numbers */
-            if (handle_number(&ptr, num_stack) != EVAL_SUCCESS) {
+            eval_error_t error_code = handle_number(&ptr, num_stack);
+            if (error_code != EVAL_SUCCESS) {
                 stack_free(num_stack);
                 stack_free(op_stack);
-                return EVAL_ERROR_MEMORY;
+                return error_code;
             }
         } else if (*ptr == '(') { /* Left parenthesis */
             stack_node_t* op_node = create_node((void*)ptr, STACK_TYPE_CHAR);
@@ -135,10 +136,12 @@ evaluate_expression(const char* expression, int32_t* result) {
             }
             ++ptr;
         } else { /* Operator */
-            if (handle_operator(&ptr, num_stack, op_stack) != EVAL_SUCCESS) {
+            eval_error_t error_code = handle_operator(&ptr, num_stack,
+                                                      op_stack);
+            if (error_code != EVAL_SUCCESS) {
                 stack_free(num_stack);
                 stack_free(op_stack);
-                return EVAL_ERROR_MEMORY;
+                return error_code;
             }
         }
     }

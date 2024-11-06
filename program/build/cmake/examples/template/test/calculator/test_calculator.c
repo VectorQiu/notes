@@ -164,8 +164,6 @@ test_evaluate_expression_division_by_zero(void) {
     int32_t result;
     eval_error_t error_code = evaluate_expression(expression, &result);
     TEST_ASSERT_EQUAL(EVAL_ERROR_DIV_BY_ZERO, error_code);
-    TEST_ASSERT_EQUAL_INT32(0, result); /* Assuming your implementation returns
-                                           0 on division by zero */
 }
 
 /**
@@ -181,8 +179,6 @@ test_evaluate_expression_invalid_operator(void) {
     int32_t result;
     eval_error_t error_code = evaluate_expression(expression, &result);
     TEST_ASSERT_EQUAL(EVAL_ERROR_INVALID_OPERATOR, error_code);
-    TEST_ASSERT_EQUAL_INT32(0, result); /* Assuming your implementation returns
-                                           0 for invalid operators */
 }
 
 /* private functions -------------------------------------------------------- */
